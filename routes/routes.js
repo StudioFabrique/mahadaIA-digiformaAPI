@@ -20,7 +20,8 @@ router.get('/saveFormationsComplete', formationsController.saveAllFormationsComp
 router.get('/saveFormationsResesume', formationsController.saveAllFormationsResume );
 
 router.get('/formationsComplete', formationsController.getFormationsComplete);
-router.get('/formationsComplete/:id', formationsController.getFormation);
+router.post('/formationsComplete/:id', formationsController.getFormation);
+router.post('/formationsCompleteBy/:id', formationsController.getFormationById);
 
 router.get('/formationsResume', formationsController.getFormationsResume);
 

@@ -7,7 +7,7 @@ const formationSchemaResume = new Schema({
     name: { type: String, required: true },
     startDate: { type: String},
     endDate: { type: String },
-    etudiants: { type: Array },
+    trainees: { type: Array, default:[] },
 
     
 });

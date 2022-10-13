@@ -17,7 +17,7 @@ const etudiantsSchema = new Schema({
     birthdate: { type: String },
     status: { type: String },
     handicaped: { type: String },
-    formations: { type: Array },
+    trainingSessions: { type: Array, default:[] },
     ghUser: { type: Schema.Types.ObjectId, ref: 'ghUser' },
     dcUser: { type: Schema.Types.ObjectId, ref: 'dcUser' }
 

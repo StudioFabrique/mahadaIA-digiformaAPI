@@ -6,8 +6,8 @@ const formationSchemaComplete = new Schema({
     name: { type: String, required: true },
     startDate: { type: String},
     endDate: { type: String },
-    trainees: {type: Array},
-    abandons: {type: Array}
+    trainees: {type: Array, default:[]},
+    abandons: {type: Array, default:[]}
 
 
     

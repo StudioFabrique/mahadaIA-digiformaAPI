@@ -20,35 +20,28 @@ exports.saveAllEtudiants = async (req, res, next) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                query: `query {
-              trainees{
-                id
-                lastname
-                firstname
-                email
-                phone
-                lastDiploma
-                roadAddress
-                cityCode
-                city
-                civility
-                nationality
-                birthdate
-                status
-                handicaped
-      trainingSessions {
-        name
-        abandons {
-          abandonStartDate
-          abandonEndDate
-          isJustified
-          commentJustifiedAbsence
-        }
-
-      }
-    }
-
-  }`
+                query: 
+                `query{
+                    trainees{
+                      id
+                      lastname
+                    firstname
+                      email
+                      phone
+                      lastDiploma
+                      roadAddress
+                      cityCode
+                      city
+                      civility
+                      nationality
+                      birthdate
+                    status
+                      handicaped
+                      trainingSessions{
+                        name
+                      }
+                    }
+                  }`
             }),
         })
             .then((data) => data.json())
@@ -63,16 +56,19 @@ exports.saveAllEtudiants = async (req, res, next) => {
                     let userDf = {
 
                         id: user.id,
-                        Nom: user.lastname,
-                        Prenom: user.firstname,
-                        Nationalité: user.nationality,
-                        Telephone: user.phone,
-                        Nee: user.birthdate,
-                        adresse: user.roadAddress,
-                        status: user.status,
-                        handicape: user.handicaped,
-                        diplome: user.lastDiploma,
-                        formations: user.trainingSessions,
+                        lastname: user.lastname,
+                        firstname: user.firstname,
+                        email: user.email,
+                        phone: user.phone,
+                        lastDiploma: user.lastDiploma,
+                        roadAddress: user.roadAddress,
+                        cityCode: user.cityCode,
+                        city: user.city,
+                        civility: user.civility,
+                        nationality: user.nationality,
+                        birthdate: user.birthdate,
+                        handicaped: user.handicaped,
+                        trainingSessions: user.trainingSessions,
                     }
                     digiUsers.push(userDf);
                 });

@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 const Etudiants = require('../models/etudiantsSchema');
-const FormationsComplete = require('../models/formationSchemaResume');
+const FormationsComplete = require('../models/formationSchemaComplete');
 const FormationsResume = require('../models/formationSchemaResume');
 const DcUser = require('../models/dcUserSchema');
 const GhUser = require('../models/ghUserSchema');
@@ -24,58 +24,59 @@ exports.saveAllFormationsComplete = async (req, res, next) => {
             body: JSON.stringify({
                 query: `query{
 
-
-                    trainees{
-                      id
-                      lastname
-                      firstname
-                      email
-                      phone
-                      lastDiploma
-                      roadAddress
-                      cityCode
-                      city
-                      civility
-                      nationality
-                      birthdate
-                      status
-                      handicaped
-                      trainingSessions{
+                    trainingSessions{
+                         id
                         name
+                        startDate
+                        endDate
+                          trainees{
+                          id
+                                          lastname
+                                          firstname
+                                          email
+                                          phone
+                                          lastDiploma
+                                          roadAddress
+                                          cityCode
+                                          city
+                                          civility
+                                          nationality
+                                          birthdate
+                                          status
+                                          handicaped
+                          
                       }
-                      
+                      abandons{
+                                                isJustified
+                                          isAbandon
+                                          trainee{
+                                            lastname
+                                            firstname
+                                          }
+                      }
                     }
                   }
-                
                 `
             }),
         })
             .then((data) => data.json())
 
             .then(data => {
-                const datos = data.data.trainees
+                const datos = data.data.trainingSessions
                 // date = JSON.parse(datos);
                 // console.log(datos);
 
-                datos.forEach(user => {
+                datos.forEach(f => {
 
                     let formations = {
 
-                        id: user.id,
-                        Nom: user.lastname,
-                        Prenom: user.firstname,
-                        Nationalite: user.nationality,
-                        Telephone: user.phone,
-                        email: user.email,
-                        Nee: user.birthdate,
-                        adresse: user.roadAddress,
-                        ville: user.city,
-                        codePostal: user.cityCode,
-                        civilite: user.civility,
-                        status: user.status,
-                        handicape: user.handicaped,
-                        diplome: user.lastDiploma,
-                        formations: user.trainingSessions,
+                        id: f.id,
+                        name: f.name,
+                        startDate: f.startDate,
+                        endDate: f.endDate,
+                        trainees: f.trainees,
+                        abandons: f.abandons,
+
                     }
                     formationsArray.push(formations);
                 });
@@ -128,7 +129,7 @@ exports.saveAllFormationsResume = async (req, res, next) => {
             .then((data) => data.json())
 
             .then(data => {
-                const datos = data.data.trainees
+                const datos = data.data.trainingSessions
                 // date = JSON.parse(datos);
                 // console.log(datos);
 
@@ -181,14 +182,15 @@ exports.getFormationsResume = async (req, res, next) => {
 }
 
 exports.getFormation = async (req, res, next) => {
-    let body = req.body;
-    const forma = body.id;
+    let params = req.params;
+    // console.log(params)
+    const forma = params.id;
 
-    console.log(forma);
+    // console.log(forma);
 
     try {
 
-        const formation = await FormationsComplete.findOne(forma);
+        const formation = await FormationsComplete.findOne(params);
         // // console.log(req.query);
         res.json(formation);
 
