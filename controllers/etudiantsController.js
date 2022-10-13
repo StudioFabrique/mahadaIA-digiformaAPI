@@ -22,9 +22,20 @@ exports.saveAllEtudiants = async (req, res, next) => {
             body: JSON.stringify({
                 query: `query {
               trainees{
-      id
-      lastname
-      firstname
+                id
+                lastname
+                firstname
+                email
+                phone
+                lastDiploma
+                roadAddress
+                cityCode
+                city
+                civility
+                nationality
+                birthdate
+                status
+                handicaped
       trainingSessions {
         name
         abandons {
@@ -35,15 +46,6 @@ exports.saveAllEtudiants = async (req, res, next) => {
         }
 
       }
-      nationality
-      birthdate
-      email
-      roadAddress
-      phone
-      lastDiploma
-      status
-      handicaped
-
     }
 
   }`
