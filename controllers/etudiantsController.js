@@ -159,12 +159,7 @@ exports.getEtudiantById = async ( req, res, next ) => {
     
     try {
 
-        const etudiant = await Etudiants.findById(etu).populate("dcUser").populate({
-            path: 'ghUser',
-            populate: {
-              path: 'ghEvents',
-            }
-          });
+        const etudiant = await Etudiants.findById(etu).populate("dcUser").populate("ghUser");
         // // console.log(req.query);
         res.json(etudiant);
         
