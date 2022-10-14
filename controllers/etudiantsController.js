@@ -105,11 +105,17 @@ exports.updateEtudiant = async ( req, res, next ) => {
     const idDc = body.dc;
     const userGh = body.gh;
     const etu = body._id;
+    // console.log(body)
+    console.log(idDc)
+    console.log(userGh)
+    console.log(etu)
 
     try {
 
         const dcUser = await DcUser.findById(idDc);
+        console.log(dcUser)
         const ghUser = await GhUser.findById(userGh);
+        console.log(ghUser)
 
         
         const etudiant = await Etudiants.findByIdAndUpdate( etu, { ghUser:ghUser._id, dcUser:dcUser._id  } );
@@ -153,7 +159,12 @@ exports.getEtudiantById = async ( req, res, next ) => {
     
     try {
 
-        const etudiant = await Etudiants.findById(etu).populate("dcUser").populate("ghUser");
+        const etudiant = await Etudiants.findById(etu).populate("dcUser").populate({
+            path: 'ghUser',
+            populate: {
+              path: 'ghEvents',
+            }
+          });
         // // console.log(req.query);
         res.json(etudiant);
         

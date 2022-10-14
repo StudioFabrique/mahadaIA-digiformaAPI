@@ -12,7 +12,7 @@ router.get('/saveEtudiants', etudiantsController.saveAllEtudiants);
 router.get('/etudiants', etudiantsController.getEtudiants);
 router.get('/etudiant/:_id', etudiantsController.getEtudiantById);
 
-router.post('/etudiants/:_id/:dc/:gh', etudiantsController.updateEtudiant);
+router.post('/etudiant/update', etudiantsController.updateEtudiant);
 router.post('/etudiant/:_id', etudiantsController.getEtudiant);
 router.get('/etudiant/nom/:Nom', etudiantsController.getEtudiantByNom);
 
