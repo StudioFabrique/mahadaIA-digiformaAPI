@@ -25,34 +25,34 @@ exports.saveAllFormationsComplete = async (req, res, next) => {
                 query: `query{
 
                     trainingSessions{
-                         id
+                        id
                         name
                         startDate
                         endDate
-                          trainees{
-                          id
-                                          lastname
-                                          firstname
-                                          email
-                                          phone
-                                          lastDiploma
-                                          roadAddress
-                                          cityCode
-                                          city
-                                          civility
-                                          nationality
-                                          birthdate
-                                          status
-                                          handicaped
+                        trainees{
+                            id
+                            lastname
+                            firstname
+                            email
+                            phone
+                            lastDiploma
+                            roadAddress
+                            cityCode
+                            city
+                            civility
+                            nationality
+                            birthdate
+                            status
+                            handicaped
                           
                       }
-                      abandons{
-                                                isJustified
-                                          isAbandon
-                                          trainee{
-                                            lastname
-                                            firstname
-                                          }
+                        abandons{
+                            isJustified
+                            isAbandon
+                            trainee{
+                            lastname
+                            firstname
+                        }
                       }
                     }
                   }

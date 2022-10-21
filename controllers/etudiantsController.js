@@ -153,13 +153,13 @@ exports.getEtudiant = async ( req, res, next ) => {
 
 exports.getEtudiantById = async ( req, res, next ) => {
     // let body = req.body;
-    const etu = req.params._id;
+    const etu = req.params.id;
     
     console.log(etu);
     
     try {
 
-        const etudiant = await Etudiants.findById(etu).populate("dcUser").populate("ghUser");
+        const etudiant = await Etudiants.findOne(etu).populate("dcUser").populate("ghUser");
         // // console.log(req.query);
         res.json(etudiant);
         
