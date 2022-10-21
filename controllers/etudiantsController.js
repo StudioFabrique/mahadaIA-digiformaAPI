@@ -153,7 +153,7 @@ exports.getEtudiant = async ( req, res, next ) => {
 
 exports.getEtudiantById = async ( req, res, next ) => {
     // let body = req.body;
-    const etu = req.params.id;
+    const etu = req.params;
     
     console.log(etu);
     
