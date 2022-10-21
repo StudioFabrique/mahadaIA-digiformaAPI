@@ -10,7 +10,7 @@ module.exports = function(){
 //Routes
 router.get('/saveEtudiants', etudiantsController.saveAllEtudiants);
 router.get('/etudiants', etudiantsController.getEtudiants);
-router.get('/etudiant/:_id', etudiantsController.getEtudiantById);
+router.get('/etudiant/:id', etudiantsController.getEtudiantById);
 
 router.post('/etudiant/update', etudiantsController.updateEtudiant);
 router.post('/etudiant/:_id', etudiantsController.getEtudiant);
