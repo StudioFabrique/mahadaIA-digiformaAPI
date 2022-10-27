@@ -168,16 +168,44 @@ exports.getEtudiantById = async ( req, res, next ) => {
         next();
     }
 }
-exports.getEtudiantByNom = async ( req, res, next ) => {
+exports.getEtudiantByFirstname = async ( req, res, next ) => {
 
-    const etu = req.params.Nom;
+    const etu = req.params;
     console.log(etu);
 
     try {
 
-        const etudiant = await Etudiants.find( { Nom:{$all:[etu]} } ).populate("dcUser").populate("ghUser");
+        const etudiant = await Etudiants.find(  etu  ).populate("dcUser").populate("ghUser");
 
-        res.json(etudiant);
+        if(etudiant.length == 0) {
+            res.json(`L'élève ${etu.firstname} n'existe pas`)
+        }else {
+
+            res.json(etudiant);
+        }
+
+        
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+}
+exports.getEtudiantByLastname = async ( req, res, next ) => {
+
+    const etu = req.params;
+    console.log(etu);
+
+    try {
+
+        const etudiant = await Etudiants.find(  etu  ).populate("dcUser").populate("ghUser");
+
+        if(etudiant.length == 0) {
+            res.json(`L'élève ${etu.lastname} n'existe pas`)
+        }else {
+
+            res.json(etudiant);
+        }
+
         
     } catch (error) {
         console.log(error);

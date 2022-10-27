@@ -14,7 +14,8 @@ router.get('/etudiant/:id', etudiantsController.getEtudiantById);
 
 router.post('/etudiant/update', etudiantsController.updateEtudiant);
 router.post('/etudiant/:_id', etudiantsController.getEtudiant);
-router.get('/etudiant/nom/:Nom', etudiantsController.getEtudiantByNom);
+router.get('/etudiant/searchByFirstName/:firstname', etudiantsController.getEtudiantByFirstname);
+router.get('/etudiant/searchByLastname/:lastname', etudiantsController.getEtudiantByLastname);
 
 router.get('/saveFormationsComplete', formationsController.saveAllFormationsComplete );
 router.get('/saveFormationsResesume', formationsController.saveAllFormationsResume );
