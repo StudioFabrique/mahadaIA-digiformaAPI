@@ -112,13 +112,13 @@ exports.updateEtudiant = async ( req, res, next ) => {
 
     try {
 
-        const dcUser = await DcUser.findById(idDc);
-        console.log(dcUser)
-        const ghUser = await GhUser.findById(userGh);
-        console.log(ghUser)
+        // const dcUser = await DcUser.findById(idDc);
+        // console.log(dcUser)
+        // const ghUser = await GhUser.findById(userGh);
+        // console.log(ghUser)
 
         
-        const etudiant = await Etudiants.findByIdAndUpdate( etu, { ghUser:ghUser._id, dcUser:dcUser._id  } );
+        const etudiant = await Etudiants.findByIdAndUpdate( etu, { ghUser:userGh, dcUser:idDc  } );
 
         console.log(etudiant)
 
