@@ -106,9 +106,7 @@ exports.updateEtudiant = async ( req, res, next ) => {
     const userGh = body.gh;
     const etu = body._id;
     // console.log(body)
-    console.log(idDc)
-    console.log(userGh)
-    console.log(etu)
+ 
 
     try {
 
