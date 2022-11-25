@@ -1,8 +1,8 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require("mongoose");
 
 
 
-const eventsSchema = new Schema({
+const eventsSchema = new mongoose.Schema({
     idEv: { type: String, required: true, unique: true},
     typeEv: { type: String, required: true },
     createdAt: { type: String },
@@ -10,9 +10,11 @@ const eventsSchema = new Schema({
     repoEv: { type: Object },
     Org: { type: Object },
 
-
-
-    
 });
 
-module.exports = model('ghEvents', eventsSchema);
+const modelEvents = mongoose.model("ghEvents",eventsSchema);
+module.exports = modelEvents
+
+
+
+

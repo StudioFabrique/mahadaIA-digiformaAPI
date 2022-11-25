@@ -9,6 +9,7 @@ module.exports = function(){
 
 //Routes
 router.get('/saveEtudiants', etudiantsController.saveAllEtudiants);
+router.get('/updateListEtudiants', etudiantsController.updateListEtudiants);
 router.get('/etudiants', etudiantsController.getEtudiants);
 router.get('/etudiant/:id', etudiantsController.getEtudiantById);
 
@@ -18,7 +19,9 @@ router.get('/etudiant/searchByFirstName/:firstname', etudiantsController.getEtud
 router.get('/etudiant/searchByLastname/:lastname', etudiantsController.getEtudiantByLastname);
 
 router.get('/saveFormationsComplete', formationsController.saveAllFormationsComplete );
+router.get('/updateListFormationsComplete', formationsController.updateListFormationsComplete );
 router.get('/saveFormationsResesume', formationsController.saveAllFormationsResume );
+// router.get('/saveFormationsResesume', formationsController.saveAllFormationsResume );
 
 router.get('/formationsComplete', formationsController.getFormationsComplete);
 router.get('/formationsComplete/:id', formationsController.getFormation);
