@@ -133,13 +133,10 @@ exports.updateListEtudiants = async (req, res, next) => {
             }),
         })
             .then((data) => data.json())
-
             .then(data =>  {
-
                 const listEtudiant = data.data.trainees
                 // // date = JSON.parse(datos);
                 // // console.log(datos);
-
                 listFromMongo.forEach((d) => {
 
                     listEtudiant.forEach((a) => {
@@ -148,9 +145,7 @@ exports.updateListEtudiants = async (req, res, next) => {
                         i++
                       }
                     })
-                    
                 })
-                
                 listFromMongo.forEach((d) => {
                     
                     listEtudiant.forEach((a) => {
@@ -291,18 +286,18 @@ exports.getEtudiantById = async ( req, res, next ) => {
 }
 exports.getEtudiantByFirstname = async ( req, res, next ) => {
 
-    const etu = req.params;
-    console.log(etu);
+    const etu = req.params.firstname;
+    const regex = new RegExp( etu, 'i');
 
     try {
 
-        const etudiant = await Etudiants.find(  etu  ).populate("dcUser").populate("ghUser");
+        const etudiantPrenom = await Etudiants.find({firstname: regex}).populate("dcUser").populate("ghUser");
 
-        if(etudiant.length == 0) {
+        if(etudiantPrenom.length == 0 ) {
             res.json(`L'élève ${etu.firstname} n'existe pas`)
         }else {
 
-            res.json(etudiant);
+            res.json(etudiantPrenom);
         }
 
         
